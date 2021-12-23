@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF730ED627744D740065163B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF730ED527744D740065163B /* AppDelegate.swift */; };
 		AF730ED827744D740065163B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF730ED727744D740065163B /* SceneDelegate.swift */; };
-		AF730EDA27744D740065163B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF730ED927744D740065163B /* ViewController.swift */; };
-		AF730EDD27744D740065163B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF730EDB27744D740065163B /* Main.storyboard */; };
+		AF730EDA27744D740065163B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF730ED927744D740065163B /* CameraViewController.swift */; };
 		AF730EDF27744D750065163B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF730EDE27744D750065163B /* Assets.xcassets */; };
 		AF730EE227744D750065163B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF730EE027744D750065163B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,8 +18,7 @@
 		AF730ED227744D740065163B /* toyCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toyCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF730ED527744D740065163B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF730ED727744D740065163B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AF730ED927744D740065163B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AF730EDC27744D740065163B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF730ED927744D740065163B /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		AF730EDE27744D750065163B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF730EE127744D750065163B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF730EE327744D750065163B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,8 +56,7 @@
 			children = (
 				AF730ED527744D740065163B /* AppDelegate.swift */,
 				AF730ED727744D740065163B /* SceneDelegate.swift */,
-				AF730ED927744D740065163B /* ViewController.swift */,
-				AF730EDB27744D740065163B /* Main.storyboard */,
+				AF730ED927744D740065163B /* CameraViewController.swift */,
 				AF730EDE27744D750065163B /* Assets.xcassets */,
 				AF730EE027744D750065163B /* LaunchScreen.storyboard */,
 				AF730EE327744D750065163B /* Info.plist */,
@@ -127,7 +124,6 @@
 			files = (
 				AF730EE227744D750065163B /* LaunchScreen.storyboard in Resources */,
 				AF730EDF27744D750065163B /* Assets.xcassets in Resources */,
-				AF730EDD27744D740065163B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF730EDA27744D740065163B /* ViewController.swift in Sources */,
+				AF730EDA27744D740065163B /* CameraViewController.swift in Sources */,
 				AF730ED627744D740065163B /* AppDelegate.swift in Sources */,
 				AF730ED827744D740065163B /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +143,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AF730EDB27744D740065163B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF730EDC27744D740065163B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AF730EE027744D750065163B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +282,6 @@
 				INFOPLIST_FILE = toyCamera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +309,6 @@
 				INFOPLIST_FILE = toyCamera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
