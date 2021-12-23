@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
 
     override func loadView() {
-        super.loadView()
-        self.view.backgroundColor = .systemBackground
+        self.view = .init()
+        self.view.backgroundColor = .yellow
     }
 
 

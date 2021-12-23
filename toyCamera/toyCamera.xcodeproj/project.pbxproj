@@ -12,6 +12,7 @@
 		AF730EDA27744D740065163B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF730ED927744D740065163B /* CameraViewController.swift */; };
 		AF730EDF27744D750065163B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF730EDE27744D750065163B /* Assets.xcassets */; };
 		AF730EE227744D750065163B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF730EE027744D750065163B /* LaunchScreen.storyboard */; };
+		AF730EF9277469230065163B /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF730EF8277469230065163B /* UIControl+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AF730EDE27744D750065163B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF730EE127744D750065163B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF730EE327744D750065163B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF730EF8277469230065163B /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,127 @@
 		AF730ED427744D740065163B /* toyCamera */ = {
 			isa = PBXGroup;
 			children = (
-				AF730ED527744D740065163B /* AppDelegate.swift */,
-				AF730ED727744D740065163B /* SceneDelegate.swift */,
-				AF730ED927744D740065163B /* CameraViewController.swift */,
-				AF730EDE27744D750065163B /* Assets.xcassets */,
-				AF730EE027744D750065163B /* LaunchScreen.storyboard */,
-				AF730EE327744D750065163B /* Info.plist */,
+				AF730EEB277465DE0065163B /* Data */,
+				AF730EED277465EC0065163B /* Domain */,
+				AF730EEC277465E60065163B /* Presentation */,
+				AF730EE9277462090065163B /* Application */,
+				AF730EF6277466A50065163B /* Resource */,
 			);
 			path = toyCamera;
+			sourceTree = "<group>";
+		};
+		AF730EE9277462090065163B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				AF730ED727744D740065163B /* SceneDelegate.swift */,
+				AF730ED527744D740065163B /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		AF730EEB277465DE0065163B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AF730EF5277466630065163B /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AF730EEC277465E60065163B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				AF730EF7277468FA0065163B /* Extensions */,
+				AF730EEE277465FF0065163B /* Camera */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		AF730EED277465EC0065163B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AF730EF3277466450065163B /* Interfaces */,
+				AF730EF22774663F0065163B /* UseCases */,
+				AF730EF12774663A0065163B /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AF730EEE277465FF0065163B /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				AF730EF0277466270065163B /* View */,
+				AF730EEF277466220065163B /* ViewModel */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		AF730EEF277466220065163B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF730EF0277466270065163B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF730ED927744D740065163B /* CameraViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF730EF12774663A0065163B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		AF730EF22774663F0065163B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AF730EF3277466450065163B /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				AF730EF42774664D0065163B /* Repositories */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		AF730EF42774664D0065163B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AF730EF5277466630065163B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AF730EF6277466A50065163B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AF730EE327744D750065163B /* Info.plist */,
+				AF730EE027744D750065163B /* LaunchScreen.storyboard */,
+				AF730EDE27744D750065163B /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		AF730EF7277468FA0065163B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF730EF8277469230065163B /* UIControl+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +252,7 @@
 				AF730EDA27744D740065163B /* CameraViewController.swift in Sources */,
 				AF730ED627744D740065163B /* AppDelegate.swift in Sources */,
 				AF730ED827744D740065163B /* SceneDelegate.swift in Sources */,
+				AF730EF9277469230065163B /* UIControl+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -260,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -279,11 +395,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QD434NX8RQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = toyCamera/Info.plist;
+				INFOPLIST_FILE = toyCamera/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,7 +411,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -306,11 +424,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QD434NX8RQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = toyCamera/Info.plist;
+				INFOPLIST_FILE = toyCamera/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,7 +440,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
