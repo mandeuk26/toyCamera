@@ -13,6 +13,7 @@
 		AF730EDF27744D750065163B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF730EDE27744D750065163B /* Assets.xcassets */; };
 		AF730EE227744D750065163B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF730EE027744D750065163B /* LaunchScreen.storyboard */; };
 		AF730EF9277469230065163B /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF730EF8277469230065163B /* UIControl+Extensions.swift */; };
+		AFFF3A47277591BF001E2491 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF3A46277591BF001E2491 /* PreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AF730EE127744D750065163B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF730EE327744D750065163B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF730EF8277469230065163B /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
+		AFFF3A46277591BF001E2491 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				AF730ED927744D740065163B /* CameraViewController.swift */,
+				AFFF3A46277591BF001E2491 /* PreviewView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFFF3A47277591BF001E2491 /* PreviewView.swift in Sources */,
 				AF730EDA27744D740065163B /* CameraViewController.swift in Sources */,
 				AF730ED627744D740065163B /* AppDelegate.swift in Sources */,
 				AF730ED827744D740065163B /* SceneDelegate.swift in Sources */,

@@ -10,19 +10,17 @@ import AVFoundation
 
 class CameraViewController: UIViewController {
     
-    private var previewView: UIView = {
-        let previewView = UIView()
+    private var previewView: PreviewView = {
+        let previewView = PreviewView()
         previewView.backgroundColor = .black
         previewView.translatesAutoresizingMaskIntoConstraints = false
         return previewView
     }()
     
     private let session = AVCaptureSession()
-    private var previewLayer: AVCaptureVideoPreviewLayer!
 
     override func loadView() {
         self.view = .init()
-        self.view.backgroundColor = .yellow
         self.view.addSubview(self.previewView)
     }
     
@@ -30,13 +28,7 @@ class CameraViewController: UIViewController {
         self.configureLayouts()
         self.checkCameraPermission()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.previewLayer?.frame = self.previewView.bounds
-        self.view.layoutIfNeeded()
-    }
-    
+
     private func configureLayouts() {
         NSLayoutConstraint.activate([
             self.previewView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -64,33 +56,30 @@ class CameraViewController: UIViewController {
     }
 
     private func setupCaptureSession() {
-        session.beginConfiguration()
+        self.session.beginConfiguration()
         
         guard let captureDevice = AVCaptureDevice.default(for: .video),
               let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice),
-              session.canAddInput(captureDeviceInput)
+              self.session.canAddInput(captureDeviceInput)
         else { return }
-        session.addInput(captureDeviceInput)
+        self.session.addInput(captureDeviceInput)
     
         let photoOutput = AVCapturePhotoOutput()
-        guard session.canAddOutput(photoOutput) else { return }
-        session.sessionPreset = .photo
-        session.addOutput(photoOutput)
-        session.commitConfiguration()
+        guard self.session.canAddOutput(photoOutput) else { return }
+        self.session.sessionPreset = .photo
+        self.session.addOutput(photoOutput)
+        self.session.commitConfiguration()
         
         self.setupPreview()
     }
     
     private func setupPreview() {
-        self.previewLayer = AVCaptureVideoPreviewLayer(session: self.session)
-        self.previewLayer.videoGravity = .resizeAspectFill
-        self.previewLayer.connection?.videoOrientation = .portrait
-        
-        DispatchQueue.main.async {
-            self.previewView.layer.insertSublayer(self.previewLayer, at: 0)
-            self.previewLayer?.frame = self.previewView.bounds
-            self.previewView.layoutIfNeeded()
-            self.session.startRunning()
+        let previewLayer = AVCaptureVideoPreviewLayer(session: self.session)
+        previewLayer.videoGravity = .resizeAspectFill
+        previewLayer.connection?.videoOrientation = .portrait
+        DispatchQueue.main.async { [weak self] in
+            self?.previewView.bind(previewLayer: previewLayer)
+            self?.session.startRunning()
         }
     }
 }
