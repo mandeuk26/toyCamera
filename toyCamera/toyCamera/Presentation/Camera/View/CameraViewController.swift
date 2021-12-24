@@ -57,9 +57,8 @@ class CameraViewController: UIViewController {
 
     private func setupCaptureSession() {
         self.session.beginConfiguration()
-        
-        guard let captureDevice = AVCaptureDevice.default(for: .video),
-              let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice),
+        let captureDevice = camera(position: .back)
+        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice),
               self.session.canAddInput(captureDeviceInput)
         else { return }
         self.session.addInput(captureDeviceInput)
@@ -71,6 +70,7 @@ class CameraViewController: UIViewController {
         self.session.commitConfiguration()
         
         self.setupPreview()
+        self.session.startRunning()
     }
     
     private func setupPreview() {
@@ -79,7 +79,22 @@ class CameraViewController: UIViewController {
         previewLayer.connection?.videoOrientation = .portrait
         DispatchQueue.main.async { [weak self] in
             self?.previewView.bind(previewLayer: previewLayer)
-            self?.session.startRunning()
         }
+    }
+    
+    private func camera(position: AVCaptureDevice.Position) -> AVCaptureDevice {
+        let discoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [
+                .builtInTripleCamera,
+                .builtInDualWideCamera,
+                .builtInWideAngleCamera
+            ],
+            mediaType: .video,
+            position: .unspecified
+        )
+        
+        guard let device = discoverySession.devices.first(where: { $0.position == position })
+        else { fatalError("Missing Capture Device") }
+        return device
     }
 }
