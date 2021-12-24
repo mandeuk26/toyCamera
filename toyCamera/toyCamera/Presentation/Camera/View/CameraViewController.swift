@@ -17,11 +17,21 @@ class CameraViewController: UIViewController {
         return previewView
     }()
     
+    private var captureButton: UIButton = {
+        let captureButton = UIButton()
+        captureButton.setImage(UIImage(named: "CaptureIcon"), for: .normal)
+        captureButton.backgroundColor = .white
+        captureButton.translatesAutoresizingMaskIntoConstraints = false
+        return captureButton
+    }()
+    
     private let session = AVCaptureSession()
 
     override func loadView() {
         self.view = .init()
+        self.view.backgroundColor = .white
         self.view.addSubview(self.previewView)
+        self.view.addSubview(self.captureButton)
     }
     
     override func viewDidLoad() {
@@ -31,10 +41,15 @@ class CameraViewController: UIViewController {
 
     private func configureLayouts() {
         NSLayoutConstraint.activate([
-            self.previewView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.previewView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.previewView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.previewView.heightAnchor.constraint(equalTo: self.previewView.widthAnchor, multiplier: 4/3),
             self.previewView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            self.previewView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+            self.previewView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            
+            self.captureButton.topAnchor.constraint(equalTo: self.previewView.bottomAnchor, constant: 40),
+            self.captureButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.captureButton.widthAnchor.constraint(equalToConstant: 44),
+            self.captureButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
