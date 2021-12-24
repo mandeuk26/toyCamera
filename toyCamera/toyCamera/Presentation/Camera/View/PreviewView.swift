@@ -9,7 +9,7 @@ import AVFoundation
 import UIKit
 
 class PreviewView: UIView {
-    private var previewLayer: AVCaptureVideoPreviewLayer?
+    var previewLayer: AVCaptureVideoPreviewLayer?
 
     override func layoutSubviews() {
         super.layoutSubviews()
