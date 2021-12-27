@@ -28,8 +28,11 @@ class CameraViewController: UIViewController {
     
     private var captureButton: UIButton = {
         let captureButton = UIButton()
-        captureButton.setImage(UIImage(named: "CaptureIcon"), for: .normal)
-        captureButton.backgroundColor = .white
+        captureButton.setImage(UIImage(systemName: "camera.aperture"), for: .normal)
+        captureButton.contentHorizontalAlignment = .fill
+        captureButton.contentVerticalAlignment = .fill
+        captureButton.tintColor = .white
+        captureButton.backgroundColor = .black
         captureButton.translatesAutoresizingMaskIntoConstraints = false
         return captureButton
     }()
@@ -52,7 +55,7 @@ class CameraViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = .init()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .black
         self.view.addSubview(self.previewView)
         self.view.addSubview(self.blackShutterView)
         self.view.addSubview(self.captureButton)
