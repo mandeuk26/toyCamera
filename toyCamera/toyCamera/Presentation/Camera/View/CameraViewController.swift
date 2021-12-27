@@ -37,6 +37,17 @@ class CameraViewController: UIViewController {
         return captureButton
     }()
     
+    private var positionSwitchButton: UIButton = {
+        let switchButton = UIButton()
+        switchButton.setImage(UIImage(systemName: "arrow.triangle.2.circlepath.camera"), for: .normal)
+        switchButton.contentHorizontalAlignment = .fill
+        switchButton.contentVerticalAlignment = .fill
+        switchButton.tintColor = .white
+        switchButton.backgroundColor = .black
+        switchButton.translatesAutoresizingMaskIntoConstraints = false
+        return switchButton
+    }()
+    
     private var captureImageView: UIImageView = {
         let captureImageView = UIImageView()
         captureImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +70,7 @@ class CameraViewController: UIViewController {
         self.view.addSubview(self.previewView)
         self.view.addSubview(self.blackShutterView)
         self.view.addSubview(self.captureButton)
+        self.view.addSubview(self.positionSwitchButton)
         self.view.addSubview(self.captureImageView)
     }
     
@@ -89,7 +101,12 @@ class CameraViewController: UIViewController {
             self.captureImageView.widthAnchor.constraint(equalToConstant: 44),
             self.captureImageView.heightAnchor.constraint(equalToConstant: 44),
             self.captureImageView.centerYAnchor.constraint(equalTo: self.captureButton.centerYAnchor),
-            self.captureImageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30)
+            self.captureImageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
+            
+            self.positionSwitchButton.widthAnchor.constraint(equalToConstant: 30),
+            self.positionSwitchButton.heightAnchor.constraint(equalToConstant: 24),
+            self.positionSwitchButton.bottomAnchor.constraint(equalTo: self.previewView.topAnchor, constant: -40),
+            self.positionSwitchButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20)
         ])
     }
     
@@ -106,6 +123,26 @@ class CameraViewController: UIViewController {
                 }
                 photoSettings.flashMode = .off
                 self.captureOutput.capturePhoto(with: photoSettings, delegate: self)
+            }
+            .store(in: &self.cancellables)
+        
+        self.positionSwitchButton.publisher(for: .touchUpInside)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                guard let currentInput = self?.session.inputs.first as? AVCaptureDeviceInput else { return }
+                self?.session.beginConfiguration()
+                self?.session.removeInput(currentInput)
+
+                guard let camera = self?.camera(position: currentInput.device.position == .front ? .back : .front),
+                      let nextInput = try? AVCaptureDeviceInput(device: camera),
+                      let isAddPossible = self?.session.canAddInput(nextInput),
+                      let previewView = self?.previewView,
+                      isAddPossible
+                else { return }
+                self?.session.addInput(nextInput)
+                UIView.transition(with: previewView, duration: 0.5, options: .transitionFlipFromLeft) {
+                    self?.session.commitConfiguration()
+                }
             }
             .store(in: &self.cancellables)
     }
@@ -197,6 +234,8 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             
             let imageView = UIImageView(frame: initialFrame)
             imageView.image = uiImage
+            imageView.contentMode = .scaleAspectFill
+            imageView.layer.masksToBounds = true
             self?.view.addSubview(imageView)
             
             UIView.animateKeyframes(withDuration: 5.0, delay: 0) {
